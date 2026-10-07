@@ -34,16 +34,3 @@ test('a registered user can log in successfully', async ({ page }) => {
 
 
 
-
-test("a registered user can signup successfully", async ({ page }) => {
-  requireLoginCredentials();
-
-  const loginPage = new LoginPage(page);
-  await loginPage.openFromHomePage();
-
-  await expect(loginPage.loginHeading).toBeVisible();
-  await loginPage.login("LOGIN_EMAIL", "LOGIN_PASSWORD");
-
-  // Successful login is confirmed by the account name displayed in the site header.
-  await expect(loginPage.loggedInAs(LOGIN_NAME)).toBeVisible();
-});
